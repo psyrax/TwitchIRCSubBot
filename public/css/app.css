@@ -1,0 +1,14 @@
+.btn-twitchLogin{
+	background-color: #6E3687;
+	border-color: #6E3687;
+}
+.btn-twitchLogin:hover{
+	background-color: #64317A;
+	border-color: #64317A;
+}
+#callbacks{
+	position: absolute;
+	top: 5px;
+	right: 20px;
+	width: 300px;
+}

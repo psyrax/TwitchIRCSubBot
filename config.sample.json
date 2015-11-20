@@ -1,0 +1,26 @@
+{
+	"development": {
+		"twitchRedirect":"",
+		"twitchClient":"",
+		"twitchSecret":"",
+		"irc" : {
+			"channels": [],
+			"server": "irc.twitch.tv",
+			"username": "",
+			"port": 6667,
+			"password": ""
+		}
+	},
+	"production": {
+		"twitchRedirect":"",
+		"twitchClient":"",
+		"twitchSecret":"",
+		"irc" : {
+			"channels": [],
+			"server": "irc.twitch.tv",
+			"username": "",
+			"port": 6667,
+			"password": ""
+		}
+	}
+}
