@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	$('#imageReel').trigger('play')
 });
 function getUserToDisplay(){
 	$.ajax({

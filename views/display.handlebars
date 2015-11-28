@@ -3,5 +3,17 @@
 		<h1>user: {{ user.display_name }}</h1>
 		<h3>Time: {{ user.timeSince }}</h3>
 		<h3>Rank: {{ user.rank }}</h3>
+		<img src="/img/{{ user.rank }}.png" width="198" height="212"
+        class="reel"
+        data-frames="31"
+		data-image="/img/{{ user.rank }}.png"        
+        data-footage="31"
+        data-delay="1"
+        data-throwable="false"
+        data-play="true"
+        data-cw ="true"
+        data-speed="0.3"
+        id="imageReel"
+        >
 	</div>
 </div>

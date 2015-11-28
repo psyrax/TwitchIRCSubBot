@@ -4,7 +4,7 @@ var node_env = process.env.NODE_ENV || 'development';
 
 function getRanks(rankTime, special){
 	if ( special == 'psyrax' ){
-		return 'toss';
+		return 'probe';
 	};
 	switch(rankTime){
 		case 0:
@@ -12,7 +12,7 @@ function getRanks(rankTime, special){
 			return 'larva';
 		break;
 		case 2:
-			return 'ling';
+			return 'zergling';
 		break;
 		case 3:
 			return 'baneling';
@@ -21,16 +21,16 @@ function getRanks(rankTime, special){
 			return 'roach';
 		break;
 		case 5:
-			return 'hydra';
+			return 'hydralisk';
 		break;
 		case 6:
-			return 'muta';
+			return 'mutalisk';
 		break;
 		case 7:
 			return 'lurker';
 		break;
 		case 8:
-			return 'broodlord';
+			return 'brood-lord';
 		break;
 		case 9:
 			return 'ultralisk';
