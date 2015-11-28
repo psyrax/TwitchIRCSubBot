@@ -7,11 +7,15 @@
 	border-color: #64317A;
 }
 #callbacks{
-	position: absolute;
-	top: 5px;
+	position: fixed;
+	top: 55px;
 	right: 20px;
 	width: 300px;
+	z-index: 1000;
 }
 #displayDiv{
 	background-color: #00E821;
+}
+body{
+	padding-top: 3em;
 }
