@@ -52,8 +52,8 @@ bot.addListener('error', function(message) {
 bot.addListener("join", function(channel, who) {
 	if ( who != config.username && users.indexOf(who) < 0){
 		users.push(who);
-		console.log('connected:', who);
-		getToDisplay(who, 'jimrsng');
+		//console.log('connected:', who);
+		//getToDisplay(who, 'jimrsng');
 	}
 });
 
@@ -124,6 +124,7 @@ function getSubs(user, token, callback){
 			if (  res.body.subscriptions && res.body.subscriptions.length > 0 ){
 				subs.push(getUser);
 				subs[getUser] = res.body.subscriptions;
+				getToDisplay(res.body.subscriptions[1].user.name, getUser);
 				callback(res.body.subscriptions);
 			} else {
 				callback(res.body.message, true);
@@ -140,10 +141,15 @@ function getToDisplay(who, user){
 			var monthDate = sub.created_at.split('T');
 			userToDisplay = sub.user;
 			userToDisplay.timeSince = moment(monthDate[0]).fromNow();
+			var today = moment();
+			var subsDate = moment(monthDate[0])
+			userToDisplay.rankTime = today.diff(subsDate, 'months');
+			userToDisplay.rank = getRanks(userToDisplay.rankTime);
 		};
 	});
 	console.log('To search :', who);
 	console.log('To display :', userToDisplay);
+	console.log(who);
 
 	if ( userToDisplay ){
 		nowDisplaying[user] = userToDisplay;
@@ -174,7 +180,13 @@ app.get('/ajax/subs', isAuthenticated, function(req, res){
 
 app.get('/display', isAuthenticated, function(req, res){
 	var getUser = ( node_env  == 'development') ? 'jimrsng': req.session.passport.user._json.name;
-	res.json(nowDisplaying[getUser]);
+	var is_ajax_request = req.xhr;
+	console.log(nowDisplaying[getUser]);
+	if ( is_ajax_request ){
+		res.json(nowDisplaying[getUser]);
+	} else {
+		res.render('display', {user: nowDisplaying[getUser], isDisplay: true});
+	};
 });
 
 app.get('/:user', function(req, res){
@@ -184,3 +196,50 @@ app.get('/:user', function(req, res){
 app.listen(3000, function(){
 	console.log('App running');
 });
+
+
+function getRanks(rankTime, special){
+	if ( special == 'psyrax' ){
+		return 'toss';
+	}
+	console.log('rank time', rankTime);
+	switch(rankTime){
+		case 0:
+		case 1:
+			return 'larva';
+		break;
+		case 2:
+			return 'ling';
+		break;
+		case 3:
+			return 'baneling';
+		break;
+		case 4:
+			return 'roach';
+		break;
+		case 5:
+			return 'hydra';
+		break;
+		case 6:
+			return 'muta';
+		break;
+		case 7:
+			return 'lurker';
+		break;
+		case 8:
+			return 'broodlord';
+		break;
+		case 9:
+			return 'ultralisk';
+		break;
+		case 10:
+			return 'leviathan';
+		break;
+		case 11:
+			return 'overmind';
+		break;
+		default:
+			return 'kerrigan';
+		break;
+	};
+}

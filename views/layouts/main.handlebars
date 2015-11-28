@@ -18,9 +18,12 @@
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    {{#if useScripts}}
     <script src="/js/moment.min.js"></script>
+    {{#if useScripts}}
     <script src="/js/app.js"></script>
+    {{/if}}
+    {{#if isDisplay}}
+    <script src="/js/display.js"></script>
     {{/if}}
   </body>
 </html>
